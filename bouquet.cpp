@@ -157,12 +157,19 @@ int Bouquet::len(){
     return len;
 }
 
-bool Bouquet::operator==(Bouquet Bouquet){
-    bool flag = true;
-    for(Iterator itr = this->begin(), itr2 = Bouquet.begin();itr != Bouquet::end() && itr2 != Bouquet::end(); ++itr, ++itr2){
-        if(!(*itr == *itr2)) flag = false;
+bool Bouquet::operator==(Bouquet bouquet){
+    return this->getJsonInfo() == bouquet.getJsonInfo();
+}
+
+bool Bouquet::operator!=(Bouquet bouquet){
+    return this->getJsonInfo() != bouquet.getJsonInfo();
+}
+
+Bouquet Bouquet::operator+(Bouquet bouquet){
+    for(Iterator itr = Iterator(bouquet.head); itr != bouquet.tail; ++itr){
+        this->add(*itr);
     }
-    return flag;
+    return *this;
 }
 
 Bouquet::~Bouquet(){

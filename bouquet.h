@@ -27,7 +27,9 @@ public:
     void clearBouquet();
     void add(Flour* info);
     int len();
-    bool operator==(Bouquet Bouquet);
+    bool operator==(Bouquet bouquet);
+    bool operator!=(Bouquet bouquet);
+    Bouquet operator+(Bouquet bouquet);
     ~Bouquet();
 };
 #endif // BOUQUET_H
