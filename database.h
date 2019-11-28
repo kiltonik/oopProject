@@ -27,14 +27,16 @@ protected:
     DataBase() { }
     DataBase( const DataBase& );
     DataBase& operator=( DataBase& );
-    QVector<Bouquet> getBouquetsFromDb(QString fileName);
-    QVector<Flour> getFloursFromDb(QString fileName);
-    bool addFlourToFile(Flour newFlour);
-    bool addBouquetToFile(Bouquet newBouqet);
-    bool editBouquetInDb(Bouquet oldBouquet, Bouquet newBouquet);
-    bool editFlourInDb(Flour oldFLour, Flour newFLour);
-    bool deleteBouquetFromDb(Bouquet oddBouquet);
-    bool deleteFlourFromDb(Flour oddFlour);
+    Bouquet* getBouquetFromDb(QString fileName, int id);
+    Flour* getFlourFromDb(QString fileName, int id);
+    int* getBouquetsIds(QString fileName);
+    int* getFloursIds(QString fileName);
+    void addFlourToFile(Flour newFlour, QString fileName);
+    void addBouquetToFile(Bouquet newBouqet, QString fileName);
+    void editBouquetInDb(Bouquet oldBouquet, Bouquet newBouquet, QString fileName);
+    void editFlourInDb(Flour oldFLour, Flour newFLour, QString fileName);
+    void deleteBouquetFromDb(Bouquet oddBouquet, QString fileName);
+    void deleteFlourFromDb(Flour oddFlour, QString fileName);
     ~DataBase() { }
 public:
     static DataBase& getInstance();

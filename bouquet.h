@@ -19,9 +19,11 @@ public:
     Iterator end();
     Bouquet();
     Bouquet(const Bouquet &Bouquet);
+    Bouquet(QJsonObject jsonBouquet);
     void deleteElement(Flour* info);
-    void readBouquetFromFile(const QString& fileName);
-    void writeToFile(const QString& fileName);
+    QJsonObject getJsonInfo();
+//    void readBouquetFromFile(const QString& fileName);
+//    void writeToFile(const QString& fileName);
     void clearBouquet();
     void add(Flour* info);
     int len();

@@ -36,10 +36,18 @@ Bouquet::Bouquet(const Bouquet &Bouquet){
     }
 }
 
+Bouquet::Bouquet(QJsonObject jsonBouquet){
+    for(const auto& i: jsonBouquet.keys()){
+        QJsonObject object = jsonBouquet.value(i).toObject();
+        Flour *thing = new Flour(object);
+        this->add(thing);
+    }
+}
+
 void Bouquet::deleteElement(Flour *info){
     Node *cur = this->head;
     while(cur){
-        if(cur->info->getInfo() == info->getInfo()){
+        if(cur->info->getJsonInfo() == info->getJsonInfo()){
             if(cur == this->head){
                 if (this->head == this->tail){
                     delete cur;
@@ -73,32 +81,42 @@ void Bouquet::deleteElement(Flour *info){
     }
 }
 
-void Bouquet::readBouquetFromFile(const QString& fileName){
-    this->clearBouquet();
-    QFile file(fileName+".json");
-    if (!file.open(QIODevice::ReadOnly)) return;
-    QJsonObject temp = QJsonDocument::fromJson(file.readAll()).object();
-    for(const auto& i: temp.keys()){
-        QJsonObject object = temp.value(i).toObject();
-        Flour *thing = new Flour(object.value("price").toInt(), object.value("name").toString(), object.value("colour").toInt());
-        this->add(thing);
-    }
-    file.close();
-}
-
-void Bouquet::writeToFile(const QString& fileName){
-    QFile file(fileName+".json");
-    if (!file.open(QIODevice::WriteOnly | QIODevice::Truncate)) return;
-    QJsonDocument data;
+QJsonObject Bouquet::getJsonInfo(){
+    QJsonObject data;
     int i = 0;
-    QJsonObject t;
     for(Iterator itr = Iterator(this->head); itr != this->end(); ++itr){
-        t.insert(QString::number(i), (*itr)->getInfo());
+        data.insert(QString::number(i), (*itr)->getJsonInfo());
         ++i;
     }
-    file.write(QJsonDocument(t).toJson(QJsonDocument::Indented));
-    file.close();
+    return data;
 }
+
+//void Bouquet::readBouquetFromFile(const QString& fileName){
+//    this->clearBouquet();
+//    QFile file(fileName+".json");
+//    if (!file.open(QIODevice::ReadOnly)) return;
+//    QJsonObject temp = QJsonDocument::fromJson(file.readAll()).object();
+//    for(const auto& i: temp.keys()){
+//        QJsonObject object = temp.value(i).toObject();
+//        Flour *thing = new Flour(object.value("price").toInt(), object.value("name").toString(), object.value("colour").toInt());
+//        this->add(thing);
+//    }
+//    file.close();
+//}
+
+//void Bouquet::writeToFile(const QString& fileName){
+//    QFile file(fileName+".json");
+//    if (!file.open(QIODevice::WriteOnly | QIODevice::Truncate)) return;
+//    QJsonDocument data;
+//    int i = 0;
+//    QJsonObject t;
+//    for(Iterator itr = Iterator(this->head); itr != this->end(); ++itr){
+//        t.insert(QString::number(i), (*itr)->getInfo());
+//        ++i;
+//    }
+//    file.write(QJsonDocument(t).toJson(QJsonDocument::Indented));
+//    file.close();
+//}
 
 void Bouquet::clearBouquet(){
     Node *cur = head;

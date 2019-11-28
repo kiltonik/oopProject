@@ -15,6 +15,7 @@ public:
     Flour();
     Flour(int price, QString name, int colour);
     Flour(const Flour &flour);
+    Flour(QJsonObject jsonFlour);
     int getPrice();
     QString getName();
     int getColour();
@@ -23,7 +24,7 @@ public:
     void setColour(int colour);
     bool operator==(Flour flour);
     bool operator!=(Flour flour);
-    QJsonObject getInfo();
+    QJsonObject getJsonInfo();
 };
 
 #endif // FLOUR_H
