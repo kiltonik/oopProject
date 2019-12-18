@@ -18,6 +18,7 @@ public:
 class MainWindowInteractor
 {
 private:
+    QString fileName;
     static MainWindowInteractor* p_instance;
     static MainWindowInteractorDestroyer destroyer;
     DataBase& db;
@@ -29,6 +30,7 @@ protected:
     ~MainWindowInteractor() { }
 public:
     static MainWindowInteractor& getInstance();
+    QList<QString> getFlourColors(QString name);
 };
 
 #endif // MAINWINDOWINTERACTOR_H

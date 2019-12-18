@@ -16,24 +16,30 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    anotherwindow.cpp \
     bouquet.cpp \
     database.cpp \
     flour.cpp \
     iterator.cpp \
     main.cpp \
     mainwindow.cpp \
-    mainwindowinteractor.cpp
+    mainwindowinteractor.cpp \
+    thirdwindow.cpp
 
 HEADERS += \
+    anotherwindow.h \
     bouquet.h \
     database.h \
     flour.h \
     iterator.h \
     mainwindow.h \
-    mainwindowinteractor.h
+    mainwindowinteractor.h \
+    thirdwindow.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    anotherwindow.ui \
+    thirdwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

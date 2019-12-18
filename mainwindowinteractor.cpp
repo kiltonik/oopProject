@@ -21,3 +21,13 @@ MainWindowInteractor& MainWindowInteractor::getInstance() {
     return *p_instance;
 }
 
+QList<QString> MainWindowInteractor::getFlourColors(QString name){
+    QList<int> ids = this->db.getFloursIds(fileName);
+    QList<QString> colors;
+    for (int t: ids){
+        if (db.getFlourFromDb(fileName, t)){
+
+        }
+    }
+    return colors;
+}

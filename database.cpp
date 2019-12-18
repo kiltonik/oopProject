@@ -52,40 +52,40 @@ Flour* DataBase::getFlourFromDb(QString fileName, int id){
     throw 2;
 }
 
-int* DataBase::getBouquetsIds(QString fileName){
+QList<int> DataBase::getBouquetsIds(QString fileName){
     QFile file(fileName);
     if(!file.open(QIODevice::ReadOnly)) throw 1;
     QJsonObject t = QJsonDocument::fromJson(file.readAll()).object();
     file.close();
-    QVector<int> temp;
+    QList<int> temp;
     for(const auto& i: t.keys()){
         temp.append(i.toInt());
     }
     if(temp.size() != 0){
-        int *arr = new int[size_t(temp.size())];
-        for(int i = 0; i < temp.size(); ++i){
-            arr[i] = temp[i];
-        }
-        return arr;
+//        int *arr = new int[size_t(temp.size())];
+//        for(int i = 0; i < temp.size(); ++i){
+//            arr[i] = temp[i];
+//        }
+        return temp;
     }
     throw 2;
 }
 
-int* DataBase::getFloursIds(QString fileName){
+QList<int> DataBase::getFloursIds(QString fileName){
     QFile file(fileName);
     if(!file.open(QIODevice::ReadOnly)) throw 1;
     QJsonObject t = QJsonDocument::fromJson(file.readAll()).object();
     file.close();
-    QVector<int> temp;
+    QList<int> temp;
     for(const auto& i: t.keys()){
         temp.append(i.toInt());
     }
     if(temp.size() != 0){
-        int *arr = new int[size_t(temp.size())];
-        for(int i = 0; i < temp.size(); ++i){
-            arr[i] = temp[i];
-        }
-        return arr;
+//        int *arr = new int[size_t(temp.size())];
+//        for(int i = 0; i < temp.size(); ++i){
+//            arr[i] = temp[i];
+//        }
+        return temp;
     }
     throw 2;
 }
