@@ -61,14 +61,7 @@ QList<int> DataBase::getBouquetsIds(QString fileName){
     for(const auto& i: t.keys()){
         temp.append(i.toInt());
     }
-    if(temp.size() != 0){
-//        int *arr = new int[size_t(temp.size())];
-//        for(int i = 0; i < temp.size(); ++i){
-//            arr[i] = temp[i];
-//        }
-        return temp;
-    }
-    throw 2;
+    return temp;
 }
 
 QList<int> DataBase::getFloursIds(QString fileName){
@@ -80,14 +73,7 @@ QList<int> DataBase::getFloursIds(QString fileName){
     for(const auto& i: t.keys()){
         temp.append(i.toInt());
     }
-    if(temp.size() != 0){
-//        int *arr = new int[size_t(temp.size())];
-//        for(int i = 0; i < temp.size(); ++i){
-//            arr[i] = temp[i];
-//        }
-        return temp;
-    }
-    throw 2;
+    return temp;
 }
 
 void DataBase::addBouquetToFile(Bouquet newBouqet, QString fileName){
