@@ -18,7 +18,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     bouquet.cpp \
     database.cpp \
+    finalwindow.cpp \
     flour.cpp \
+    fuckwindow.cpp \
     iterator.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -27,12 +29,16 @@ SOURCES += \
 HEADERS += \
     bouquet.h \
     database.h \
+    finalwindow.h \
     flour.h \
+    fuckwindow.h \
     iterator.h \
     mainwindow.h \
     mainwindowinteractor.h
 
 FORMS += \
+    finalwindow.ui \
+    fuckwindow.ui \
     mainwindow.ui
 
 # Default rules for deployment.

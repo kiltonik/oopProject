@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="roseButton">
     <property name="geometry">
      <rect>
       <x>70</x>
@@ -27,7 +27,7 @@
      <string/>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="lilButton">
     <property name="geometry">
      <rect>
       <x>290</x>
@@ -40,7 +40,7 @@
      <string/>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="orchButton">
     <property name="geometry">
      <rect>
       <x>510</x>
@@ -53,7 +53,7 @@
      <string/>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_4">
+   <widget class="QPushButton" name="zhasButton">
     <property name="geometry">
      <rect>
       <x>70</x>
@@ -66,7 +66,7 @@
      <string/>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_5">
+   <widget class="QPushButton" name="chrizButton">
     <property name="geometry">
      <rect>
       <x>290</x>
@@ -79,7 +79,7 @@
      <string/>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_6">
+   <widget class="QPushButton" name="gorButton">
     <property name="geometry">
      <rect>
       <x>510</x>

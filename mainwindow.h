@@ -3,8 +3,6 @@
 
 #include <QMainWindow>
 #include "mainwindowinteractor.h"
-#include <anotherwindow.h>
-#include <thirdwindow.h>
 #include <QIcon>
 
 
@@ -21,17 +19,16 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_pushButton_clicked();
-    void on_pushButton_2_clicked();
-    void on_pushButton_3_clicked();
-    void on_pushButton_4_clicked();
-    void on_pushButton_5_clicked();
-    void on_pushButton_6_clicked();
-    void on_pushButton_7_clicked();
+    void on_roseButton_clicked();
+    void on_lilButton_clicked();
+    void on_orchButton_clicked();
+    void on_zhasButton_clicked();
+    void on_chrizButton_clicked();
+    void on_gorButton_clicked();
+    void on_bouquetButton_clicked();
 private:
     MainWindowInteractor* interactor;
     Ui::MainWindow *ui;
-    anotherwindow *sWindow;
-    thirdwindow *thirdWindow;
 };
 #endif // MAINWINDOW_H
+

@@ -1,32 +1,26 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "fuckwindow.h"
+#include "finalwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    MainWindow::ui->pushButton->setIcon(QIcon("rose.jpg"));
-    MainWindow::ui->pushButton->setIconSize(QSize(180,180));
-    MainWindow::ui->pushButton_2->setIcon(QIcon("lil.jpg"));
-    MainWindow::ui->pushButton_2->setIconSize(QSize(180,180));
-    MainWindow::ui->pushButton_3->setIcon(QIcon("orh.jpg"));
-    MainWindow::ui->pushButton_3->setIconSize(QSize(220,170));
-    MainWindow::ui->pushButton_4->setIcon(QIcon("zha.jpg"));
-    MainWindow::ui->pushButton_4->setIconSize(QSize(180,180));
-    MainWindow::ui->pushButton_5->setIcon(QIcon("chr.jpg"));
-    MainWindow::ui->pushButton_5->setIconSize(QSize(180,180));
-    MainWindow::ui->pushButton_6->setIcon(QIcon("gor.jpg"));
-    MainWindow::ui->pushButton_6->setIconSize(QSize(180,180));
-    sWindow = new anotherwindow();
-        // РїРѕРґРєР»СЋС‡Р°РµРј Рє СЃР»РѕС‚Сѓ Р·Р°РїСѓСЃРєР° РіР»Р°РІРЅРѕРіРѕ РѕРєРЅР° РїРѕ РєРЅРѕРїРєРµ РІРѕ РІС‚РѕСЂРѕРј РѕРєРЅРµ
-    connect(sWindow, &anotherwindow::firstWindow, this, &MainWindow::show);
-
-        // РРЅРёС†РёР°Р»РёР·РёСЂСѓРµРј С‚СЂРµС‚СЊРµ РѕРєРЅРѕ
-    thirdWindow = new thirdwindow();
-        // РїРѕРґРєР»СЋС‡Р°РµРј Рє СЃР»РѕС‚Сѓ Р·Р°РїСѓСЃРєР° РіР»Р°РІРЅРѕРіРѕ РѕРєРЅР° РїРѕ РєРЅРѕРїРєРµ РІ С‚СЂРµС‚СЊРµРј РѕРєРЅРµ
-    connect(thirdWindow, &thirdwindow::firstWindow, this, &MainWindow::show);
-}
+    MainWindow::ui->roseButton->setIcon(QIcon("rose.jpg"));
+    MainWindow::ui->roseButton->setIconSize(QSize(180,180));
+    MainWindow::ui->lilButton->setIcon(QIcon("lil.jpg"));
+    MainWindow::ui->lilButton->setIconSize(QSize(180,180));
+    MainWindow::ui->orchButton->setIcon(QIcon("orh.jpg"));
+    MainWindow::ui->orchButton->setIconSize(QSize(220,170));
+    MainWindow::ui->zhasButton->setIcon(QIcon("zha.jpg"));
+    MainWindow::ui->zhasButton->setIconSize(QSize(180,180));
+    MainWindow::ui->chrizButton->setIcon(QIcon("chr.jpg"));
+    MainWindow::ui->chrizButton->setIconSize(QSize(180,180));
+    MainWindow::ui->gorButton->setIcon(QIcon("gor.jpg"));
+    MainWindow::ui->gorButton->setIconSize(QSize(180,180));
+ }
 
 MainWindow::~MainWindow()
 {
@@ -34,43 +28,61 @@ MainWindow::~MainWindow()
 }
 
 
-void MainWindow::on_pushButton_clicked()
+void MainWindow::on_roseButton_clicked()
 {
-    anotherwindow *tmp = new anotherwindow(this);
-    tmp->show();
-    tmp->setFocus();
-//    this->close();
+    QString name = "Rose";
+    FuckWindow *window = new FuckWindow(this,name);
+    window->show();
+    this->setEnabled(false);
+    window->setEnabled(true);
+
+
 }
 
-void MainWindow::on_pushButton_2_clicked()
+void MainWindow::on_lilButton_clicked()
 {
-    sWindow->show();
-    this->close();
+    QString name = "Lilia";
+    FuckWindow *window = new FuckWindow(this,name);
+    window->show();
+    this->setEnabled(false);
+    window->setEnabled(true);
 }
-void MainWindow::on_pushButton_3_clicked()
+void MainWindow::on_orchButton_clicked()
 {
-    sWindow->show();
-    this->close();
+    QString name = "Orchideya";
+    FuckWindow *window = new FuckWindow(this, name);
+    window->show();
+    this->setEnabled(false);
+    window->setEnabled(true);
 }
-void MainWindow::on_pushButton_4_clicked()
+void MainWindow::on_zhasButton_clicked()
 {
-    sWindow->show();
-    this->close();
+    QString name = "Zhasmin";
+    FuckWindow *window = new FuckWindow(this, name);
+    window->show();
+    this->setEnabled(false);
+    window->setEnabled(true);
 }
-void MainWindow::on_pushButton_5_clicked()
+void MainWindow::on_chrizButton_clicked()
 {
-
-    sWindow->show();
-    this->close();
+    QString name = "Chrizantema";
+    FuckWindow *window = new FuckWindow(this, name);
+    window->show();
+    this->setEnabled(false);
+    window->setEnabled(true);
 }
-void MainWindow::on_pushButton_6_clicked()
+void MainWindow::on_gorButton_clicked()
 {
-    sWindow->show();
-    this->close();
+    QString name = "Gortensiya";
+    FuckWindow *window = new FuckWindow(this, name);
+    window->show();
+    this->setEnabled(false);
+    window->setEnabled(true);
 }
-void MainWindow::on_pushButton_7_clicked()
+void MainWindow::on_bouquetButton_clicked()
 {
-
-    thirdWindow->show();
-    this->close();
+    FinalWindow *window = new FinalWindow(this);
+    window->show();
+    this->setEnabled(false);
+    window->setEnabled(true);
 }
