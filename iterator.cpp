@@ -1,7 +1,7 @@
 #include "iterator.h"
 
 Iterator::Iterator(Bouquet::Node* ptr){
-    nodeptr = ptr;
+    this->nodeptr = ptr;
 }
 
 const Iterator Iterator::operator++(){

@@ -12,23 +12,22 @@ class Bouquet
         Flour* info;
         Node *next= nullptr, *prev= nullptr;
     };
+private:
+    Node *head, *tail;
 public:
     friend class Iterator;
-    Node *head, *tail;
-    Iterator begin();
-    Iterator end();
+    Iterator begin() const;
+    Iterator end() const;
     Bouquet();
     Bouquet(const Bouquet &Bouquet);
     Bouquet(QJsonObject jsonBouquet);
-    void deleteElement(Flour* info);
-    QJsonObject getJsonInfo();
-//    void readBouquetFromFile(const QString& fileName);
-//    void writeToFile(const QString& fileName);
+    void deleteElement(Flour& info);
+    QJsonObject getJsonInfo() const;
     void clearBouquet();
-    void add(Flour* info);
-    int len();
-    bool operator==(Bouquet bouquet);
-    bool operator!=(Bouquet bouquet);
+    void add(Flour& info);
+    int len() const;
+    bool operator==(Bouquet bouquet) const;
+    bool operator!=(Bouquet bouquet) const;
     Bouquet operator+(Bouquet bouquet);
     ~Bouquet();
 };

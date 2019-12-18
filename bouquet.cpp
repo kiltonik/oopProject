@@ -12,14 +12,12 @@
 #include "iterator.h"
 
 
-Iterator Bouquet::begin(){
-    Iterator *begin = new Iterator(this->head);
-    return *begin;
+Iterator Bouquet::begin() const{
+    return Iterator(this->head);
 }
 
-Iterator Bouquet::end(){
-    Iterator *end(nullptr);
-    return *end;
+Iterator Bouquet::end() const{
+    return Iterator(nullptr);
 }
 Bouquet::Bouquet()
 {
@@ -32,7 +30,7 @@ Bouquet::Bouquet(const Bouquet &Bouquet){
     this->head = nullptr;
     this->tail = nullptr;
     for(; itr != Bouquet::end(); ++itr){
-        this->add(*itr);
+        this->add(*(*itr));
     }
 }
 
@@ -40,14 +38,14 @@ Bouquet::Bouquet(QJsonObject jsonBouquet){
     for(const auto& i: jsonBouquet.keys()){
         QJsonObject object = jsonBouquet.value(i).toObject();
         Flour *thing = new Flour(object);
-        this->add(thing);
+        this->add(*thing);
     }
 }
 
-void Bouquet::deleteElement(Flour *info){
+void Bouquet::deleteElement(Flour& info){
     Node *cur = this->head;
     while(cur){
-        if(cur->info->getJsonInfo() == info->getJsonInfo()){
+        if(cur->info->getJsonInfo() == info.getJsonInfo()){
             if(cur == this->head){
                 if (this->head == this->tail){
                     delete cur;
@@ -81,7 +79,7 @@ void Bouquet::deleteElement(Flour *info){
     }
 }
 
-QJsonObject Bouquet::getJsonInfo(){
+QJsonObject Bouquet::getJsonInfo() const{
     QJsonObject data;
     int i = 0;
     for(Iterator itr = Iterator(this->head); itr != this->end(); ++itr){
@@ -129,9 +127,9 @@ void Bouquet::clearBouquet(){
     tail = nullptr;
 }
 
-void Bouquet::add(Flour* info){
+void Bouquet::add(Flour& info){
     Node *newNode = new Node;
-    newNode->info = info;
+    newNode->info = &info;
     if(!head){
         newNode->prev = nullptr;
         head = tail = newNode;
@@ -146,7 +144,7 @@ void Bouquet::add(Flour* info){
 
 }
 
-int Bouquet::len(){
+int Bouquet::len() const{
     int len = 0;
     Node *temp;
     temp = head;
@@ -157,17 +155,17 @@ int Bouquet::len(){
     return len;
 }
 
-bool Bouquet::operator==(Bouquet bouquet){
+bool Bouquet::operator==(Bouquet bouquet) const{
     return this->getJsonInfo() == bouquet.getJsonInfo();
 }
 
-bool Bouquet::operator!=(Bouquet bouquet){
+bool Bouquet::operator!=(Bouquet bouquet) const{
     return this->getJsonInfo() != bouquet.getJsonInfo();
 }
 
 Bouquet Bouquet::operator+(Bouquet bouquet){
     for(Iterator itr = Iterator(bouquet.head); itr != bouquet.tail; ++itr){
-        this->add(*itr);
+        this->add(*(*itr));
     }
     return *this;
 }

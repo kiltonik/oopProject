@@ -10,7 +10,7 @@ class Flour
 private:
     int price_;
     QString name_;
-    int colour_;
+    QString colour_;
 public:
     Flour();
     Flour(int price, QString name, int colour);
@@ -18,10 +18,10 @@ public:
     Flour(QJsonObject jsonFlour);
     int getPrice();
     QString getName();
-    int getColour();
+    QString getColour();
     void setPrice(int price);
     void setName(QString name);
-    void setColour(int colour);
+    void setColour(QString colour);
     bool operator==(Flour flour);
     bool operator!=(Flour flour);
     QJsonObject getJsonInfo();

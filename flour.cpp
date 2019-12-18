@@ -35,7 +35,7 @@ QString Flour::getName(){
     return name_;
 }
 
-int Flour::getColour(){
+QString Flour::getColour(){
     return colour_;
 }
 
@@ -47,7 +47,7 @@ void Flour::setName(QString name){
     name_ = name;
 }
 
-void Flour::setColour(int colour){
+void Flour::setColour(QString colour){
     colour_ = colour;
 }
 
