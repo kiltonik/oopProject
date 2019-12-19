@@ -7,7 +7,12 @@ FinalWindow::FinalWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     QWidget::setFixedSize(580, 350);
-    //ui->listWidget->addItems(тут надо лист передать и сразу по дефолту заполнять виджет)
+    this->interactor = &(MainWindowInteractor::getInstance());
+    QList<QList<QString>> tmp = interactor->getBouquetInfo();
+    foreach (auto i, tmp){
+        ui->listWidget->addItem(QString("Flour: ") + i[0] + QString("\nColor: ")
+                + i[1] + QString("\nPrice: ") + i[2]);
+    }
 }
 
 FinalWindow::~FinalWindow()

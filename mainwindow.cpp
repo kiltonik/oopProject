@@ -3,11 +3,13 @@
 #include "fuckwindow.h"
 #include "finalwindow.h"
 #include "databasefile.h"
+#include "mainwindowinteractor.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
+    this->interactor = &(MainWindowInteractor::getInstance());
     ui->setupUi(this);
     QWidget::setFixedSize(730, 550);
     MainWindow::ui->roseButton->setIcon(QIcon("rose.jpg"));
@@ -83,8 +85,6 @@ void MainWindow::on_gorButton_clicked()
 }
 void MainWindow::on_bouquetButton_clicked()
 {
-//    Form *a = new Form(NULL);
-//    a->show();
     this->finalWindow = new FinalWindow(nullptr);
 
     this->finalWindow->show();

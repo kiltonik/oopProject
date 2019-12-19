@@ -20,6 +20,7 @@ signals:
 
 private:
     Ui::FinalWindow *ui;
+    MainWindowInteractor* interactor;
 private slots:
     void on_changeButton_clicked();
     void on_endButton_clicked();
