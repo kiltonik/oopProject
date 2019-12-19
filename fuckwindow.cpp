@@ -8,7 +8,7 @@ FuckWindow::FuckWindow(QWidget *parent,QString name) :
 {
     ui->setupUi(this);
     //ui->comboBox->addItems(list->getFlourColors(name));хз сработает ли оно так, но должно
-
+    QWidget::setFixedSize(700, 360);
 }
 
 FuckWindow::~FuckWindow()
@@ -17,7 +17,7 @@ FuckWindow::~FuckWindow()
 }
 void FuckWindow::on_anotherFlourButton_clicked(){
     this->close();
-    setEnabled(true);
+//    setEnabled(true);
 
 
 }

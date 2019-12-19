@@ -26,6 +26,7 @@ private slots:
     void on_chrizButton_clicked();
     void on_gorButton_clicked();
     void on_bouquetButton_clicked();
+    void on_dataBaseButton_clicked();
 private:
     MainWindowInteractor* interactor;
     Ui::MainWindow *ui;

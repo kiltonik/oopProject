@@ -6,6 +6,7 @@ FinalWindow::FinalWindow(QWidget *parent) :
     ui(new Ui::FinalWindow)
 {
     ui->setupUi(this);
+    QWidget::setFixedSize(580, 350);
     //ui->listWidget->addItems(тут надо лист передать и сразу по дефолту заполнять виджет)
 }
 
