@@ -1,6 +1,8 @@
 #ifndef DATABASEFILE_H
 #define DATABASEFILE_H
 
+#include "mainwindowinteractor.h"
+
 #include <QDialog>
 
 namespace Ui {
@@ -16,7 +18,9 @@ public:
     ~dataBaseFile();
 
 private:
+    MainWindowInteractor* interactor;
     Ui::dataBaseFile *ui;
+private slots:
     void on_dataBaseButton_clicked();
 };
 

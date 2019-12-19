@@ -14,7 +14,7 @@ class FuckWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit FuckWindow(QWidget *parent = nullptr,QString name1 = "");
+    explicit FuckWindow(QWidget *parent = nullptr);
     ~FuckWindow();
     MainWindowInteractor *interactor;
 signals:
@@ -22,6 +22,8 @@ signals:
 private:
     Ui::FuckWindow *ui;
     QString name;
+public slots:
+    void fillData(QString flourName);
 private slots:
     void on_anotherFlourButton_clicked();
     void on_addButton_clicked();

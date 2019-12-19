@@ -23,12 +23,12 @@ MainWindowInteractor& MainWindowInteractor::getInstance() {
     return *p_instance;
 }
 
-QList<QString> MainWindowInteractor::getFlourColors(QString name){
-    QList<int> ids = this->db.getFloursIds(fileName);
+QList<QString> MainWindowInteractor::getFlourColors(QString name) const{
+    QList<int> ids = this->db.getFloursIds(this->fileName);
     QList<QString> colors;
     for (int t: ids){
         try{
-            Flour *flour = db.getFlourFromDb(fileName, t);
+            Flour *flour = db.getFlourFromDb(this->fileName, t);
             if (flour->getName() == name){
                 colors.append(flour->getColour());
             }
@@ -42,10 +42,10 @@ QList<QString> MainWindowInteractor::getFlourColors(QString name){
 
 void MainWindowInteractor::addToTemporaryBouquet(QString name,
                                                 QString color, int number){
-    QList<int> ids = this->db.getFloursIds(fileName);
+    QList<int> ids = this->db.getFloursIds(this->fileName);
     for (int t: ids){
         try{
-            Flour *flour = db.getFlourFromDb(fileName, t);
+            Flour *flour = db.getFlourFromDb(this->fileName, t);
             if (flour->getName() == name && flour->getColour() == color){
                 for (int i = 0; i < number; ++i){
                     this->tempBouquet.add(*flour);
@@ -58,11 +58,11 @@ void MainWindowInteractor::addToTemporaryBouquet(QString name,
     }
 }
 
-int MainWindowInteractor::getPrice(QString name, QString color){
-    QList<int> ids = this->db.getFloursIds(fileName);
+int MainWindowInteractor::getPrice(QString name, QString color) const{
+    QList<int> ids = this->db.getFloursIds(this->fileName);
     for (int t: ids){
         try{
-            Flour *flour = db.getFlourFromDb(fileName, t);
+            Flour *flour = db.getFlourFromDb(this->fileName, t);
             if (flour->getName() == name && flour->getColour() == color){
                 return flour->getPrice();
             }
@@ -74,7 +74,7 @@ int MainWindowInteractor::getPrice(QString name, QString color){
     return 0;
 }
 
-QList<QList<QString>> MainWindowInteractor::getBouquetInfo(){
+QList<QList<QString>> MainWindowInteractor::getBouquetInfo() const{
     QList<QList<QString>> temp;
 
     for (Iterator itr = this->tempBouquet.begin();
@@ -92,10 +92,10 @@ void MainWindowInteractor::clearTempBouquet(){
 }
 
 void MainWindowInteractor::deleteFlourInTempBouquet(QString name, QString color){
-    QList<int> ids = this->db.getFloursIds(fileName);
+    QList<int> ids = this->db.getFloursIds(this->fileName);
     for (int t: ids){
         try{
-            Flour *flour = db.getFlourFromDb(fileName, t);
+            Flour *flour = db.getFlourFromDb(this->fileName, t);
             if (flour->getName() == name && flour->getColour() == color){
                 this->tempBouquet.deleteElement(*flour);
             }
@@ -106,10 +106,14 @@ void MainWindowInteractor::deleteFlourInTempBouquet(QString name, QString color)
     }
 }
 
-void MainWindowInteractor::saveBouuetToDb(){
+void MainWindowInteractor::saveBouuetToDb() const{
+    db.addBouquetToFile(this->tempBouquet, this->fileName);
+}
+
+void MainWindowInteractor::saveBouquetToFIle(QString fileName) const{
     db.addBouquetToFile(this->tempBouquet, fileName);
 }
 
-void MainWindowInteractor::saveBouquetToFIle(QString fileName){
-    db.addBouquetToFile(this->tempBouquet, fileName);
+void MainWindowInteractor::setDbFile(QString fileName){
+    this->fileName = fileName;
 }

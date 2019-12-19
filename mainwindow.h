@@ -33,6 +33,9 @@ private slots:
 public slots:
     void enableWindow();
 
+signals:
+    QString sendFlourName(QString flourName);
+
 private:
     FuckWindow *fuckWindow;
     FinalWindow *finalWindow;

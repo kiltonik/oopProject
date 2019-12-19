@@ -35,12 +35,15 @@ MainWindow::~MainWindow()
 void MainWindow::on_roseButton_clicked()
 {
     QString name = "Rose";
-    this->fuckWindow = new FuckWindow(nullptr, name);
+    this->fuckWindow = new FuckWindow(nullptr);
+
+    emit sendFlourName(name);
 
     this->fuckWindow->show();
 
     this->setEnabled(false);
     this->fuckWindow->setEnabled(true);
+
 
     QObject::connect(this->fuckWindow, &FuckWindow::endClicked,
                      this, &MainWindow::enableWindow);
@@ -50,7 +53,7 @@ void MainWindow::on_roseButton_clicked()
 void MainWindow::on_lilButton_clicked()
 {
     QString name = "Lilia";
-    this->fuckWindow = new FuckWindow(nullptr, name);
+    this->fuckWindow = new FuckWindow(nullptr);
 
     this->fuckWindow->show();
 
@@ -63,7 +66,7 @@ void MainWindow::on_lilButton_clicked()
 void MainWindow::on_orchButton_clicked()
 {
     QString name = "Orchideya";
-    this->fuckWindow = new FuckWindow(nullptr, name);
+    this->fuckWindow = new FuckWindow(nullptr);
 
     this->fuckWindow->show();
 
@@ -76,7 +79,7 @@ void MainWindow::on_orchButton_clicked()
 void MainWindow::on_zhasButton_clicked()
 {
     QString name = "Zhasmin";
-    this->fuckWindow = new FuckWindow(nullptr, name);
+    this->fuckWindow = new FuckWindow(nullptr);
 
     this->fuckWindow->show();
 
@@ -89,7 +92,7 @@ void MainWindow::on_zhasButton_clicked()
 void MainWindow::on_chrizButton_clicked()
 {
     QString name = "Chrizantema";
-    this->fuckWindow = new FuckWindow(nullptr, name);
+    this->fuckWindow = new FuckWindow(nullptr);
 
     this->fuckWindow->show();
 
@@ -103,7 +106,7 @@ void MainWindow::on_gorButton_clicked()
 {
     QString name = "Gortensiya";
 
-    this->fuckWindow = new FuckWindow(nullptr, name);
+    this->fuckWindow = new FuckWindow(nullptr);
 
     this->fuckWindow->show();
 
@@ -134,3 +137,7 @@ void MainWindow::on_dataBaseButton_clicked(){
 void MainWindow::enableWindow(){
     this->setEnabled(true);
 }
+
+//QString MainWindow::sendFlourName(QString flourName){
+//    return flourName;
+//}

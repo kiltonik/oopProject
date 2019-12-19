@@ -1,13 +1,15 @@
 #include "fuckwindow.h"
 #include "ui_fuckwindow.h"
 #include "mainwindowinteractor.h"
+#include "mainwindow.h"
 
-FuckWindow::FuckWindow(QWidget *parent,QString name) :
+FuckWindow::FuckWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::FuckWindow)
 {
+    connect(parent, SIGNAL(sendFlourName(QString)), this, SLOT(fillData(QString)));
+    this->interactor = &(MainWindowInteractor::getInstance());
     ui->setupUi(this);
-    //ui->comboBox->addItems(list->getFlourColors(name));хз сработает ли оно так, но должно
     QWidget::setFixedSize(700, 360);
 }
 
@@ -18,14 +20,17 @@ FuckWindow::~FuckWindow()
 void FuckWindow::on_anotherFlourButton_clicked(){
     emit this->endClicked();
     this->close();
-
-
-
 }
 void FuckWindow::on_addButton_clicked(){
     int x = ui->spinBox->value();
     QString color = ui->comboBox->currentText();
-//    interactor->addToTemporaryBouquet(name,color,x);
+    interactor->addToTemporaryBouquet(name,color,x);
     //Тут надо вывести в listWidget, у меня ругается почти на все
     // По дизайну хуйня, я хз, что можно вставить справа от listWidget, где есть промежуток между кнопками и боксами
+}
+
+void FuckWindow::fillData(QString flourName){
+    this->name = flourName;
+    QStringList tmp = QStringList(this->interactor->getFlourColors(this->name));
+    ui->comboBox->addItems(QStringList(this->interactor->getFlourColors(this->name)));
 }

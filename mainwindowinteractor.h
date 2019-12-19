@@ -32,13 +32,13 @@ protected:
 public:
     static MainWindowInteractor& getInstance();
     // Возвращает список всех цветов для цветка по имени
-    QList<QString> getFlourColors(QString name);
+    QList<QString> getFlourColors(QString name) const;
     // возвращает цену цветка по имени и цвету
-    int getPrice(QString name, QString color);
+    int getPrice(QString name, QString color) const;
     // Функция возвращает информацию о создаваемом букете
     // в виде двусвязного списка строк
     // Второй список имеет вид [name, color, price]
-    QList<QList<QString>> getBouquetInfo();
+    QList<QList<QString>> getBouquetInfo() const;
     // Добавляет указанное количество необходимого цветка необходимого цвета
     void addToTemporaryBouquet(QString name, QString color, int number);
     // Очищает букет создаваемый пользователем
@@ -47,10 +47,10 @@ public:
     // при его отсутсвтвии просто ничего не делает
     void deleteFlourInTempBouquet(QString name, QString color);
     // Сохраняет создаваемый букет в бд
-    void saveBouuetToDb();
+    void saveBouuetToDb() const;
     // Сохраняет создаваемый букет в выбранный файл
-    void saveBouquetToFIle(QString fileName);
-
+    void saveBouquetToFIle(QString fileName) const;
+    void setDbFile(QString fileName);
 };
 
 #endif // MAINWINDOWINTERACTOR_H
