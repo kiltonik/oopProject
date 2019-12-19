@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "finalwindow.h"
 #include "mainwindowinteractor.h"
 #include <QIcon>
 
@@ -27,7 +28,12 @@ private slots:
     void on_gorButton_clicked();
     void on_bouquetButton_clicked();
     void on_dataBaseButton_clicked();
+
+public slots:
+    void enableWindow();
+
 private:
+    FinalWindow *finalWindow;
     MainWindowInteractor* interactor;
     Ui::MainWindow *ui;
 };

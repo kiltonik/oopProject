@@ -13,4 +13,5 @@ dataBaseFile::~dataBaseFile()
 }
 void dataBaseFile::on_dataBaseButton_clicked(){
     QString file = ui->lineEdit->text();
+    this->close();
 }

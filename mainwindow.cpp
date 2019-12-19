@@ -83,15 +83,24 @@ void MainWindow::on_gorButton_clicked()
 }
 void MainWindow::on_bouquetButton_clicked()
 {
-    FinalWindow *window = new FinalWindow(this);
+//    Form *a = new Form(NULL);
+//    a->show();
+    this->finalWindow = new FinalWindow(nullptr);
+
+    this->finalWindow->show();
 
     this->setEnabled(false);
-    window->setEnabled(true);
+    this->finalWindow->setEnabled(true);
 
-    window->show();
+    QObject::connect(this->finalWindow, &FinalWindow::endClicked,
+                     this, &MainWindow::enableWindow);
 }
 void MainWindow::on_dataBaseButton_clicked(){
     dataBaseFile window;
     window.setModal(true);
     window.exec();
+}
+
+void MainWindow::enableWindow(){
+    this->setEnabled(true);
 }
