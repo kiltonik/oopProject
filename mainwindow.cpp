@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "fuckwindow.h"
 #include "finalwindow.h"
+#include "databasefile.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -85,4 +86,9 @@ void MainWindow::on_bouquetButton_clicked()
     window->show();
     this->setEnabled(false);
     window->setEnabled(true);
+}
+void MainWindow::on_dataBaseButton_clicked(){
+    dataBaseFile window;
+    window.setModal(true);
+    window.exec();
 }
