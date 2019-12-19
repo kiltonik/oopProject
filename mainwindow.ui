@@ -92,11 +92,11 @@
      <string/>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_7">
+   <widget class="QPushButton" name="bouquetButton">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>470</y>
+      <x>70</x>
+      <y>450</y>
       <width>171</width>
       <height>71</height>
      </rect>
