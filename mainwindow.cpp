@@ -84,17 +84,14 @@ void MainWindow::on_gorButton_clicked()
 void MainWindow::on_bouquetButton_clicked()
 {
     FinalWindow *window = new FinalWindow(this);
-<<<<<<< HEAD
+
     this->setEnabled(false);
     window->setEnabled(true);
-=======
+
     window->show();
-//    this->setEnabled(false);
-//    window->setEnabled(true);
 }
 void MainWindow::on_dataBaseButton_clicked(){
     dataBaseFile window;
     window.setModal(true);
     window.exec();
->>>>>>> 589777febcd4821afe975e48823c482736d5eda5
 }
