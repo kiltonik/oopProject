@@ -14,7 +14,7 @@ class FuckWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit FuckWindow(QWidget *parent = nullptr);
+    explicit FuckWindow(QWidget *parent = nullptr, QString name1 = "");
     ~FuckWindow();
     MainWindowInteractor *interactor;
 signals:

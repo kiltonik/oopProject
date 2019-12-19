@@ -2,15 +2,18 @@
 #include "ui_fuckwindow.h"
 #include "mainwindowinteractor.h"
 #include "mainwindow.h"
-
-FuckWindow::FuckWindow(QWidget *parent) :
+#include <iostream>
+using namespace std;
+FuckWindow::FuckWindow(QWidget *parent, QString name1) :
     QMainWindow(parent),
     ui(new Ui::FuckWindow)
 {
+    ui->lineEdit->setText(name1);
     connect(parent, SIGNAL(sendFlourName(QString)), this, SLOT(fillData(QString)));
     this->interactor = &(MainWindowInteractor::getInstance());
     ui->setupUi(this);
     QWidget::setFixedSize(700, 360);
+
 }
 
 FuckWindow::~FuckWindow()
