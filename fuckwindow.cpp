@@ -16,6 +16,7 @@ FuckWindow::~FuckWindow()
     delete ui;
 }
 void FuckWindow::on_anotherFlourButton_clicked(){
+    emit this->endClicked();
     this->close();
 
 
@@ -27,6 +28,4 @@ void FuckWindow::on_addButton_clicked(){
 //    interactor->addToTemporaryBouquet(name,color,x);
     //Тут надо вывести в listWidget, у меня ругается почти на все
     // По дизайну хуйня, я хз, что можно вставить справа от listWidget, где есть промежуток между кнопками и боксами
-
-
 }

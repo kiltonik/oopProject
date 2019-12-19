@@ -17,7 +17,8 @@ public:
     explicit FuckWindow(QWidget *parent = nullptr,QString name1 = "");
     ~FuckWindow();
     MainWindowInteractor *interactor;
-
+signals:
+    void endClicked();
 private:
     Ui::FuckWindow *ui;
     QString name;

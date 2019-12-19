@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "finalwindow.h"
+#include "fuckwindow.h"
 #include "mainwindowinteractor.h"
 #include <QIcon>
 
@@ -33,6 +34,7 @@ public slots:
     void enableWindow();
 
 private:
+    FuckWindow *fuckWindow;
     FinalWindow *finalWindow;
     MainWindowInteractor* interactor;
     Ui::MainWindow *ui;

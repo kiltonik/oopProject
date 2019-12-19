@@ -35,53 +35,83 @@ MainWindow::~MainWindow()
 void MainWindow::on_roseButton_clicked()
 {
     QString name = "Rose";
-    FuckWindow *window = new FuckWindow(this,name);
-    window->show();
-//    this->setEnabled(false);
-//    window->setEnabled(true);
+    this->fuckWindow = new FuckWindow(nullptr, name);
 
+    this->fuckWindow->show();
+
+    this->setEnabled(false);
+    this->fuckWindow->setEnabled(true);
+
+    QObject::connect(this->fuckWindow, &FuckWindow::endClicked,
+                     this, &MainWindow::enableWindow);
 
 }
 
 void MainWindow::on_lilButton_clicked()
 {
     QString name = "Lilia";
-    FuckWindow *window = new FuckWindow(this,name);
-    window->show();
-//    this->setEnabled(false);
-//    window->setEnabled(true);
+    this->fuckWindow = new FuckWindow(nullptr, name);
+
+    this->fuckWindow->show();
+
+    this->setEnabled(false);
+    this->fuckWindow->setEnabled(true);
+
+    QObject::connect(this->fuckWindow, &FuckWindow::endClicked,
+                     this, &MainWindow::enableWindow);
 }
 void MainWindow::on_orchButton_clicked()
 {
     QString name = "Orchideya";
-    FuckWindow *window = new FuckWindow(this, name);
-    window->show();
-//    this->setEnabled(false);
-//    window->setEnabled(true);
+    this->fuckWindow = new FuckWindow(nullptr, name);
+
+    this->fuckWindow->show();
+
+    this->setEnabled(false);
+    this->fuckWindow->setEnabled(true);
+
+    QObject::connect(this->fuckWindow, &FuckWindow::endClicked,
+                     this, &MainWindow::enableWindow);
 }
 void MainWindow::on_zhasButton_clicked()
 {
     QString name = "Zhasmin";
-    FuckWindow *window = new FuckWindow(this, name);
-    window->show();
-//    this->setEnabled(false);
-//    window->setEnabled(true);
+    this->fuckWindow = new FuckWindow(nullptr, name);
+
+    this->fuckWindow->show();
+
+    this->setEnabled(false);
+    this->fuckWindow->setEnabled(true);
+
+    QObject::connect(this->fuckWindow, &FuckWindow::endClicked,
+                     this, &MainWindow::enableWindow);
 }
 void MainWindow::on_chrizButton_clicked()
 {
     QString name = "Chrizantema";
-    FuckWindow *window = new FuckWindow(this, name);
-    window->show();
-//    this->setEnabled(false);
-//    window->setEnabled(true);
+    this->fuckWindow = new FuckWindow(nullptr, name);
+
+    this->fuckWindow->show();
+
+    this->setEnabled(false);
+    this->fuckWindow->setEnabled(true);
+
+    QObject::connect(this->fuckWindow, &FuckWindow::endClicked,
+                     this, &MainWindow::enableWindow);
 }
 void MainWindow::on_gorButton_clicked()
 {
     QString name = "Gortensiya";
-    FuckWindow *window = new FuckWindow(this, name);
-    window->show();
-//    this->setEnabled(false);
-//    window->setEnabled(true);
+
+    this->fuckWindow = new FuckWindow(nullptr, name);
+
+    this->fuckWindow->show();
+
+    this->setEnabled(false);
+    this->fuckWindow->setEnabled(true);
+
+    QObject::connect(this->fuckWindow, &FuckWindow::endClicked,
+                     this, &MainWindow::enableWindow);
 }
 void MainWindow::on_bouquetButton_clicked()
 {

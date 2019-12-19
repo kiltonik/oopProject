@@ -24,7 +24,8 @@ void FinalWindow::on_endButton_clicked(){
     this->close();
 }
 void FinalWindow::on_changeButton_clicked(){
+    emit this->endClicked();
     this->close();
-    setEnabled(true);
+
 }
 
