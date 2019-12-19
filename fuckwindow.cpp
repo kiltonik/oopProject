@@ -7,7 +7,6 @@ FuckWindow::FuckWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::FuckWindow)
 {
-    connect(parent, SIGNAL(sendFlourName(QString)), this, SLOT(fillData(QString)));
     this->interactor = &(MainWindowInteractor::getInstance());
     ui->setupUi(this);
     QWidget::setFixedSize(700, 360);
