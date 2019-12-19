@@ -37,6 +37,9 @@ void MainWindow::on_roseButton_clicked()
     QString name = "Rose";
     this->fuckWindow = new FuckWindow(nullptr,name);
 
+
+    connect(this, &MainWindow::sendFlourName, fuckWindow, &FuckWindow::fillData);
+
     emit sendFlourName(name);
 
     this->fuckWindow->show();

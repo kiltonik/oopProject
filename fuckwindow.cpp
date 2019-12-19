@@ -8,8 +8,11 @@ FuckWindow::FuckWindow(QWidget *parent, QString name1) :
     QMainWindow(parent),
     ui(new Ui::FuckWindow)
 {
+<<<<<<< HEAD
     ui->lineEdit->setText(name1);
     connect(parent, SIGNAL(sendFlourName(QString)), this, SLOT(fillData(QString)));
+=======
+>>>>>>> refs/remotes/origin/master
     this->interactor = &(MainWindowInteractor::getInstance());
     ui->setupUi(this);
     QWidget::setFixedSize(700, 360);
