@@ -17,7 +17,7 @@ FuckWindow::~FuckWindow()
 }
 void FuckWindow::on_anotherFlourButton_clicked(){
     this->close();
-//    setEnabled(true);
+    setEnabled(true);
 
 
 }

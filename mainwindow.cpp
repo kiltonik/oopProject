@@ -10,7 +10,6 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     QWidget::setFixedSize(730, 550);
-    connect(
     MainWindow::ui->roseButton->setIcon(QIcon("rose.jpg"));
     MainWindow::ui->roseButton->setIconSize(QSize(180,180));
     MainWindow::ui->lilButton->setIcon(QIcon("lil.jpg"));

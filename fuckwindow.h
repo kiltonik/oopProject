@@ -20,9 +20,11 @@ public:
 
 private:
     Ui::FuckWindow *ui;
+    QString name;
+private slots:
     void on_anotherFlourButton_clicked();
     void on_addButton_clicked();
-    QString name;
+
 
 };
 
