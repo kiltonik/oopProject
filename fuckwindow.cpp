@@ -16,17 +16,16 @@ FuckWindow::~FuckWindow()
     delete ui;
 }
 void FuckWindow::on_anotherFlourButton_clicked(){
+    emit this->endClicked();
     this->close();
-    setEnabled(true);
+
 
 
 }
 void FuckWindow::on_addButton_clicked(){
     int x = ui->spinBox->value();
     QString color = ui->comboBox->currentText();
-    list->addToTemporaryBouquet(name,color,x);
+//    interactor->addToTemporaryBouquet(name,color,x);
     //Тут надо вывести в listWidget, у меня ругается почти на все
     // По дизайну хуйня, я хз, что можно вставить справа от listWidget, где есть промежуток между кнопками и боксами
-
-
 }

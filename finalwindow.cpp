@@ -1,8 +1,8 @@
 #include "finalwindow.h"
 #include "ui_finalwindow.h"
-
+#include "iostream"
 FinalWindow::FinalWindow(QWidget *parent) :
-    QMainWindow(parent),
+    QWidget(parent),
     ui(new Ui::FinalWindow)
 {
     ui->setupUi(this);
@@ -15,9 +15,12 @@ FinalWindow::~FinalWindow()
     delete ui;
 }
 void FinalWindow::on_endButton_clicked(){
+    emit this->endClicked();
     this->close();
 }
 void FinalWindow::on_changeButton_clicked(){
+    emit this->endClicked();
     this->close();
-    setEnabled(true);
+
 }
+

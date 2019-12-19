@@ -16,15 +16,15 @@ class FuckWindow : public QMainWindow
 public:
     explicit FuckWindow(QWidget *parent = nullptr,QString name1 = "");
     ~FuckWindow();
-    MainWindowInteractor *list;
-
+    MainWindowInteractor *interactor;
+signals:
+    void endClicked();
 private:
     Ui::FuckWindow *ui;
     QString name;
 private slots:
     void on_anotherFlourButton_clicked();
     void on_addButton_clicked();
-
 
 };
 

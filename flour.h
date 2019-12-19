@@ -13,7 +13,7 @@ private:
     QString colour_;
 public:
     Flour();
-    Flour(int price, QString name, int colour);
+    Flour(int price, QString name, QString colour);
     Flour(const Flour &flour);
     Flour(QJsonObject jsonFlour);
     int getPrice();
