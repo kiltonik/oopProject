@@ -9,6 +9,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    QWidget::setFixedSize(730, 550);
     MainWindow::ui->roseButton->setIcon(QIcon("rose.jpg"));
     MainWindow::ui->roseButton->setIconSize(QSize(180,180));
     MainWindow::ui->lilButton->setIcon(QIcon("lil.jpg"));
@@ -34,8 +35,8 @@ void MainWindow::on_roseButton_clicked()
     QString name = "Rose";
     FuckWindow *window = new FuckWindow(this,name);
     window->show();
-    this->setEnabled(false);
-    window->setEnabled(true);
+//    this->setEnabled(false);
+//    window->setEnabled(true);
 
 
 }
@@ -45,47 +46,47 @@ void MainWindow::on_lilButton_clicked()
     QString name = "Lilia";
     FuckWindow *window = new FuckWindow(this,name);
     window->show();
-    this->setEnabled(false);
-    window->setEnabled(true);
+//    this->setEnabled(false);
+//    window->setEnabled(true);
 }
 void MainWindow::on_orchButton_clicked()
 {
     QString name = "Orchideya";
     FuckWindow *window = new FuckWindow(this, name);
     window->show();
-    this->setEnabled(false);
-    window->setEnabled(true);
+//    this->setEnabled(false);
+//    window->setEnabled(true);
 }
 void MainWindow::on_zhasButton_clicked()
 {
     QString name = "Zhasmin";
     FuckWindow *window = new FuckWindow(this, name);
     window->show();
-    this->setEnabled(false);
-    window->setEnabled(true);
+//    this->setEnabled(false);
+//    window->setEnabled(true);
 }
 void MainWindow::on_chrizButton_clicked()
 {
     QString name = "Chrizantema";
     FuckWindow *window = new FuckWindow(this, name);
     window->show();
-    this->setEnabled(false);
-    window->setEnabled(true);
+//    this->setEnabled(false);
+//    window->setEnabled(true);
 }
 void MainWindow::on_gorButton_clicked()
 {
     QString name = "Gortensiya";
     FuckWindow *window = new FuckWindow(this, name);
     window->show();
-    this->setEnabled(false);
-    window->setEnabled(true);
+//    this->setEnabled(false);
+//    window->setEnabled(true);
 }
 void MainWindow::on_bouquetButton_clicked()
 {
     FinalWindow *window = new FinalWindow(this);
     window->show();
-    this->setEnabled(false);
-    window->setEnabled(true);
+//    this->setEnabled(false);
+//    window->setEnabled(true);
 }
 void MainWindow::on_dataBaseButton_clicked(){
     dataBaseFile window;
