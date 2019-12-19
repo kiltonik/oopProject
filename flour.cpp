@@ -2,7 +2,7 @@
 
 Flour::Flour() = default;
 
-Flour::Flour(int price, QString name, int colour){
+Flour::Flour(int price, QString name, QString colour){
     price_ = price;
     name_ = name;
     colour_ = colour;
@@ -23,7 +23,7 @@ Flour::Flour(QJsonObject jsonFlour):Flour(){
         name_ = jsonFlour.value("name").toString();
     }
     if(!(jsonFlour.value("colour") == QJsonValue::Undefined)){
-        colour_ = jsonFlour.value("colour").toInt();
+        colour_ = jsonFlour.value("colour").toString();
     }
 }
 

@@ -38,7 +38,8 @@ public:
     void editBouquetInDb(Bouquet oldBouquet, Bouquet newBouquet, QString fileName);
     void editFlourInDb(Flour oldFLour, Flour newFLour, QString fileName);
     void deleteBouquetFromDb(Bouquet oddBouquet, QString fileName);
-    void deleteFlourFromDb(Flour oddFlour, QString fileName);    
+    void deleteFlourFromDb(Flour oddFlour, QString fileName);
+    QString getDbFIleName();
     static DataBase& getInstance();
 };
 

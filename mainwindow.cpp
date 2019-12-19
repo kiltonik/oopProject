@@ -82,7 +82,6 @@ void MainWindow::on_gorButton_clicked()
 void MainWindow::on_bouquetButton_clicked()
 {
     FinalWindow *window = new FinalWindow(this);
-    window->show();
     this->setEnabled(false);
     window->setEnabled(true);
 }
