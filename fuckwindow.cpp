@@ -7,7 +7,7 @@ FuckWindow::FuckWindow(QWidget *parent,QString name) :
     ui(new Ui::FuckWindow)
 {
     ui->setupUi(this);
-    ui->comboBox->addItems(list->getFlourColors(name));//хз сработает ли оно так, но должно
+    //ui->comboBox->addItems(list->getFlourColors(name));хз сработает ли оно так, но должно
 
 }
 
