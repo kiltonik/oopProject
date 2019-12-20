@@ -3,7 +3,7 @@
 
 #include <QMainWindow>
 #include "finalwindow.h"
-#include "fuckwindow.h"
+#include "addingflourwindow.h"
 #include "mainwindowinteractor.h"
 #include <QIcon>
 
@@ -37,7 +37,7 @@ signals:
     QString sendFlourName(QString flourName);
 
 private:
-    FuckWindow *fuckWindow;
+    AddingFlourWindow *addingFlourWindow;
     FinalWindow *finalWindow;
     MainWindowInteractor* interactor;
     Ui::MainWindow *ui;

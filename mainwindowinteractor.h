@@ -34,7 +34,7 @@ public:
     // Возвращает список всех цветов для цветка по имени
     QList<QString> getFlourColors(QString name) const;
     // возвращает цену цветка по имени и цвету
-    int getPrice(QString name, QString color) const;
+    int getFlourPrice(QString name, QString color) const;
     // Функция возвращает информацию о создаваемом букете
     // в виде двусвязного списка строк
     // Второй список имеет вид [name, color, price]
@@ -51,6 +51,8 @@ public:
     // Сохраняет создаваемый букет в выбранный файл
     void saveBouquetToFIle(QString fileName) const;
     void setDbFile(QString fileName);
+    int getTempBouquetPrice() const;
+    QString getFlourPic(QString name, QString color) const;
 };
 
 #endif // MAINWINDOWINTERACTOR_H

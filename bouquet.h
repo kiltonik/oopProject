@@ -26,6 +26,7 @@ public:
     void clearBouquet();
     void add(Flour& info);
     int len() const;
+    int price() const;
     bool operator==(Bouquet bouquet) const;
     bool operator!=(Bouquet bouquet) const;
     Bouquet operator+(Bouquet bouquet);

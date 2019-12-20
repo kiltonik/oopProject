@@ -18,58 +18,52 @@ MainWindowInteractor& MainWindowInteractor::getInstance() {
     if(!p_instance)     {
         p_instance = new MainWindowInteractor(DataBase::getInstance());
         p_instance->tempBouquet = Bouquet();
+        p_instance->fileName = "DB.json";
         destroyer.initialize( p_instance);
     }
     return *p_instance;
 }
 
 QList<QString> MainWindowInteractor::getFlourColors(QString name) const{
+
     QList<int> ids = this->db.getFloursIds(this->fileName);
     QList<QString> colors;
     for (int t: ids){
-        try{
-            Flour *flour = db.getFlourFromDb(this->fileName, t);
-            if (flour->getName() == name){
-                colors.append(flour->getColour());
-            }
-        }
-        catch (int){
-            
+        Flour *flour = db.getFlourFromDb(this->fileName, t);
+        if (flour != nullptr){
+            if (flour->getName() == name) colors.append(flour->getColor());
+
         }
     }
     return colors;
 }
 
 void MainWindowInteractor::addToTemporaryBouquet(QString name,
-                                                QString color, int number){
+                                                 QString color, int number){
     QList<int> ids = this->db.getFloursIds(this->fileName);
     for (int t: ids){
-        try{
-            Flour *flour = db.getFlourFromDb(this->fileName, t);
-            if (flour->getName() == name && flour->getColour() == color){
+        Flour *flour = db.getFlourFromDb(this->fileName, t);
+        if (flour != nullptr){
+            if (flour->getName() == name && flour->getColor() == color){
                 for (int i = 0; i < number; ++i){
                     this->tempBouquet.add(*flour);
                 }
             }
         }
-        catch (int){
 
-        }
     }
 }
 
-int MainWindowInteractor::getPrice(QString name, QString color) const{
+int MainWindowInteractor::getFlourPrice(QString name, QString color) const{
     QList<int> ids = this->db.getFloursIds(this->fileName);
     for (int t: ids){
-        try{
-            Flour *flour = db.getFlourFromDb(this->fileName, t);
-            if (flour->getName() == name && flour->getColour() == color){
+
+        Flour *flour = db.getFlourFromDb(this->fileName, t);
+        if(flour != nullptr){
+            if (flour->getName() == name && flour->getColor() == color)
                 return flour->getPrice();
-            }
         }
-        catch(int){
-            return 0;
-        }
+
     }
     return 0;
 }
@@ -80,7 +74,7 @@ QList<QList<QString>> MainWindowInteractor::getBouquetInfo() const{
     for (Iterator itr = this->tempBouquet.begin();
          itr != this->tempBouquet.end(); ++itr){
         QList<QString> tmp;
-        tmp.append({(*itr)->getName(), (*itr)->getColour(),
+        tmp.append({(*itr)->getName(), (*itr)->getColor(),
                     QString::number((*itr)->getPrice())});
         temp.append(tmp);
     }
@@ -94,15 +88,13 @@ void MainWindowInteractor::clearTempBouquet(){
 void MainWindowInteractor::deleteFlourInTempBouquet(QString name, QString color){
     QList<int> ids = this->db.getFloursIds(this->fileName);
     for (int t: ids){
-        try{
-            Flour *flour = db.getFlourFromDb(this->fileName, t);
-            if (flour->getName() == name && flour->getColour() == color){
-                this->tempBouquet.deleteElement(*flour);
-            }
-        }
-        catch (int){
 
+        Flour *flour = db.getFlourFromDb(this->fileName, t);
+        if (flour != nullptr){
+            if (flour->getName() == name && flour->getColor() == color)
+                this->tempBouquet.deleteElement(*flour);
         }
+
     }
 }
 
@@ -116,4 +108,21 @@ void MainWindowInteractor::saveBouquetToFIle(QString fileName) const{
 
 void MainWindowInteractor::setDbFile(QString fileName){
     this->fileName = fileName;
+}
+
+int MainWindowInteractor::getTempBouquetPrice() const{
+    return this->tempBouquet.price();
+}
+
+QString MainWindowInteractor::getFlourPic(QString name, QString color) const{
+    QList<int> ids = this->db.getFloursIds(this->fileName);
+    QString url;
+    for (int t: ids){
+        Flour *flour = db.getFlourFromDb(this->fileName, t);
+        if (flour != nullptr){
+            if (flour->getName() == name && flour->getColor() == color)
+                url = flour->getPicUrl();
+        }
+    }
+    return url;
 }

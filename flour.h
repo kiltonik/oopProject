@@ -16,15 +16,16 @@ public:
     Flour(int price, QString name, QString colour);
     Flour(const Flour &flour);
     Flour(QJsonObject jsonFlour);
-    int getPrice();
-    QString getName();
-    QString getColour();
+    int getPrice() const;
+    QString getName() const;
+    QString getColor() const;
     void setPrice(int price);
     void setName(QString name);
     void setColour(QString colour);
-    bool operator==(Flour flour);
-    bool operator!=(Flour flour);
-    QJsonObject getJsonInfo();
+    bool operator==(Flour flour) const;
+    bool operator!=(Flour flour) const;
+    QJsonObject getJsonInfo() const;
+    QString getPicUrl() const;
 };
 
 #endif // FLOUR_H

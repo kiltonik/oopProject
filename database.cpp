@@ -25,7 +25,7 @@ DataBase& DataBase::getInstance() {
 
 Bouquet* DataBase::getBouquetFromDb(QString fileName, int id){
     QFile file(fileName);
-    if(!file.open(QIODevice::ReadOnly)) throw 1;
+    if(!file.open(QIODevice::ReadOnly)) return nullptr;
     QJsonObject t = QJsonDocument::fromJson(file.readAll()).object();
     file.close();
 
@@ -36,33 +36,33 @@ Bouquet* DataBase::getBouquetFromDb(QString fileName, int id){
         }
     }
 
-    file.close();
-    throw 1;
+    return nullptr;
 }
 
 Flour* DataBase::getFlourFromDb(QString fileName, int id){
     QFile file(fileName);
-    if(!file.open(QIODevice::ReadOnly)) throw 1;
+    if(!file.open(QIODevice::ReadOnly)) return nullptr;
     QJsonObject t = QJsonDocument::fromJson(file.readAll()).object();
     file.close();
 
     for(const auto& i: t.keys()){
-        if (i == id){
+        if (i == QString::number(id)){
+            QJsonObject c = t.value(i).toObject();
             Flour *flour = new Flour(t.value(i).toObject());
             return flour;
         }
     }
-
-    throw 2;
+    return nullptr;
 }
 
 QList<int> DataBase::getBouquetsIds(QString fileName){
+    QList<int> temp;
+
     QFile file(fileName);
-    if(!file.open(QIODevice::ReadOnly)) throw 1;
+    if(!file.open(QIODevice::ReadOnly)) return temp;
     QJsonObject t = QJsonDocument::fromJson(file.readAll()).object();
     file.close();
 
-    QList<int> temp;
     for(const auto& i: t.keys()){
         temp.append(i.toInt());
     }
@@ -70,12 +70,13 @@ QList<int> DataBase::getBouquetsIds(QString fileName){
 }
 
 QList<int> DataBase::getFloursIds(QString fileName){
+    QList<int> temp;
+
     QFile file(fileName);
-    if(!file.open(QIODevice::ReadOnly)) throw 1;
+    if(!file.open(QIODevice::ReadOnly)) return temp;
     QJsonObject t = QJsonDocument::fromJson(file.readAll()).object();
     file.close();
 
-    QList<int> temp;
     for(const auto& i: t.keys()){
         temp.append(i.toInt());
     }
@@ -84,11 +85,11 @@ QList<int> DataBase::getFloursIds(QString fileName){
 
 void DataBase::addBouquetToFile(Bouquet newBouqet, QString fileName){
     QFile file(fileName);
-    if(!file.open(QIODevice::ReadOnly)) throw 1;
+    if(!file.open(QIODevice::ReadOnly)) return;
     QJsonObject t = QJsonDocument::fromJson(file.readAll()).object();
     file.close();
 
-    if(!file.open(QIODevice::WriteOnly | QIODevice::Truncate)) throw 1;
+    if(!file.open(QIODevice::WriteOnly | QIODevice::Truncate)) return;
 
     if (t.keys().isEmpty()) t.insert(QString("0"), newBouqet.getJsonInfo());
 
@@ -100,11 +101,11 @@ void DataBase::addBouquetToFile(Bouquet newBouqet, QString fileName){
 
 void DataBase::addFlourToFile(Flour newFlour, QString fileName){
     QFile file(fileName);
-    if(!file.open(QIODevice::ReadOnly)) throw 1;
+    if(!file.open(QIODevice::ReadOnly)) return;
     QJsonObject t = QJsonDocument::fromJson(file.readAll()).object();
     file.close();
 
-    if(!file.open(QIODevice::WriteOnly | QIODevice::Truncate)) throw 1;
+    if(!file.open(QIODevice::WriteOnly | QIODevice::Truncate)) return;
 
     if (t.keys().isEmpty()) t.insert(QString("0"), newFlour.getJsonInfo());
     else t.insert(QString::number(t.keys().last().toInt()+1), newFlour
@@ -116,11 +117,11 @@ void DataBase::addFlourToFile(Flour newFlour, QString fileName){
 
 void DataBase::editFlourInDb(Flour oldFLour, Flour newFLour, QString fileName){
     QFile file(fileName);
-    if(!file.open(QIODevice::ReadOnly)) throw 1;
+    if(!file.open(QIODevice::ReadOnly)) return;
     QJsonObject t = QJsonDocument::fromJson(file.readAll()).object();
     file.close();
 
-    if(!file.open(QIODevice::WriteOnly | QIODevice::Truncate)) throw 1;
+    if(!file.open(QIODevice::WriteOnly | QIODevice::Truncate)) return;
 
     for(const auto& i: t.keys()){
         if (t.value(i).toObject() == oldFLour.getJsonInfo()){
@@ -136,11 +137,11 @@ void DataBase::editFlourInDb(Flour oldFLour, Flour newFLour, QString fileName){
 void DataBase::editBouquetInDb(Bouquet oldBouquet, Bouquet newBouquet,
                                QString fileName){
     QFile file(fileName);
-    if(!file.open(QIODevice::ReadOnly)) throw 1;
+    if(!file.open(QIODevice::ReadOnly)) return;
     QJsonObject t = QJsonDocument::fromJson(file.readAll()).object();
     file.close();
 
-    if(!file.open(QIODevice::WriteOnly | QIODevice::Truncate)) throw 1;
+    if(!file.open(QIODevice::WriteOnly | QIODevice::Truncate)) return;
 
     for(const auto& i: t.keys()){
         if (t.value(i).toObject() == oldBouquet.getJsonInfo()){
@@ -155,11 +156,11 @@ void DataBase::editBouquetInDb(Bouquet oldBouquet, Bouquet newBouquet,
 
 void DataBase::deleteFlourFromDb(Flour oddFlour, QString fileName){
     QFile file(fileName);
-    if(!file.open(QIODevice::ReadOnly)) throw 1;
+    if(!file.open(QIODevice::ReadOnly)) return;
     QJsonObject t = QJsonDocument::fromJson(file.readAll()).object();
     file.close();
 
-    if(!file.open(QIODevice::WriteOnly | QIODevice::Truncate)) throw 1;
+    if(!file.open(QIODevice::WriteOnly | QIODevice::Truncate)) return;
 
     for(const auto& i: t.keys()){
         if (t.value(i).toObject() == oddFlour.getJsonInfo()){
@@ -173,11 +174,11 @@ void DataBase::deleteFlourFromDb(Flour oddFlour, QString fileName){
 
 void DataBase::deleteBouquetFromDb(Bouquet oddBouquet, QString fileName){
     QFile file(fileName);
-    if(!file.open(QIODevice::ReadOnly)) throw 1;
+    if(!file.open(QIODevice::ReadOnly)) return;
     QJsonObject t = QJsonDocument::fromJson(file.readAll()).object();
     file.close();
 
-    if(!file.open(QIODevice::WriteOnly | QIODevice::Truncate)) throw 1;
+    if(!file.open(QIODevice::WriteOnly | QIODevice::Truncate)) return;
 
     for(const auto& i: t.keys()){
         if (t.value(i).toObject() == oddBouquet.getJsonInfo()){
@@ -187,10 +188,4 @@ void DataBase::deleteBouquetFromDb(Bouquet oddBouquet, QString fileName){
 
     file.write(QJsonDocument(t).toJson(QJsonDocument::Indented));
     file.close();
-}
-
-QString DataBase::getDbFIleName(){
-    QFile file(QString("settings.txt"));
-    if(!file.open(QIODevice::ReadOnly)) throw 1;
-
 }

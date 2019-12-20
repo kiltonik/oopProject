@@ -170,6 +170,17 @@ Bouquet Bouquet::operator+(Bouquet bouquet){
     return *this;
 }
 
+int Bouquet::price() const{
+    int price = 0;
+    Node *temp;
+    temp = head;
+    while(temp){
+        price += temp->info->getPrice();
+        temp = temp->next;
+    }
+    return price;
+}
+
 Bouquet::~Bouquet(){
     this->clearBouquet();
     delete head;
