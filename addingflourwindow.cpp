@@ -61,11 +61,4 @@ void AddingFlourWindow::on_comboBox_currentTextChanged(const QString &color)
                                        interactor->getFlourPrice(this->name, color)));
 
     this->update();
-//    QPicture tmp = QPicture();
-
-//    QBrush *brush = new QBrush;
-//    QPalette *palette = new QPalette;
-//    brush->setTextureImage(QImage(this->interactor->getFlourPic(this->name, color)));
-//    palette->setBrush(QPalette::Window, *brush);
-//    ui->widget->setPalette(*palette);
 }

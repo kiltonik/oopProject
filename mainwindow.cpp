@@ -66,6 +66,7 @@ void MainWindow::on_lilButton_clicked()
 
     emit sendFlourName(name);
 
+
     this->addingFlourWindow->show();
 
     this->setEnabled(false);
@@ -78,6 +79,7 @@ void MainWindow::on_orchButton_clicked()
 {
     QString name = "hydrangea";
     this->addingFlourWindow = new AddingFlourWindow(nullptr);
+
 
     connect(this, &MainWindow::sendFlourName, addingFlourWindow,
             &AddingFlourWindow::fillData);
@@ -99,6 +101,7 @@ void MainWindow::on_zhasButton_clicked()
 
     connect(this, &MainWindow::sendFlourName, addingFlourWindow,
             &AddingFlourWindow::fillData);
+
 
     emit sendFlourName(name);
 
@@ -133,6 +136,7 @@ void MainWindow::on_gorButton_clicked()
     QString name = "hydrangea";
 
     this->addingFlourWindow = new AddingFlourWindow(nullptr);
+
 
     connect(this, &MainWindow::sendFlourName, addingFlourWindow,
             &AddingFlourWindow::fillData);
